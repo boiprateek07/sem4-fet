@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z-Index Example</title>
+
+  <style>
+    body {
+      position: relative;
+      height: 100vh;
+      margin: 0;
+      background: #f0f0f0;
+    }
+
+    .box {
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      color: white;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #box1 {
+      background: crimson;
+      top: 50px;
+      left: 50px;
+      z-index: 1;
+    }
+
+    #box2 {
+      background: royalblue;
+      top: 100px;
+      left: 100px;
+      z-index: 2;
+    }
+
+    #box3 {
+      background: seagreen;
+      top: 150px;
+      left: 150px;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box" id="box1">1</div>
+  <div class="box" id="box2">2</div>
+  <div class="box" id="box3">3</div>
+
+  <script>
+    const boxes = document.querySelectorAll(".box");
+
+    let highestZ = 3;
+
+    boxes.forEach(box => {
+      box.addEventListener("click", () => {
+        highestZ++;
+        box.style.zIndex = highestZ;
+      });
+    });
+  </script>
+
+</body>
+</html>
