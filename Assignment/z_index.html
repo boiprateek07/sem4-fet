@@ -1,69 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Z-Index Example</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced z-index Stacking</title>
 
   <style>
-    body {
-      position: relative;
-      height: 100vh;
-      margin: 0;
-      background: #f0f0f0;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
     }
 
-    .box {
-      width: 150px;
-      height: 150px;
-      position: absolute;
-      color: white;
-      font-size: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: 0.3s;
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at top left, #1e3c72, #0f172a 55%);
     }
 
-    #box1 {
-      background: crimson;
-      top: 50px;
-      left: 50px;
-      z-index: 1;
+    .container{
+      position:relative;
+      width:900px;
+      height:550px;
     }
 
-    #box2 {
-      background: royalblue;
-      top: 100px;
-      left: 100px;
-      z-index: 2;
+    .title{
+      position:absolute;
+      top:-70px;
+      left:0;
+      color:white;
     }
 
-    #box3 {
-      background: seagreen;
-      top: 150px;
-      left: 150px;
-      z-index: 3;
+    .title h1{
+      font-size:42px;
+      letter-spacing:2px;
+      margin-bottom:10px;
+    }
+
+    .title p{
+      color:#cbd5e1;
+      max-width:700px;
+      line-height:1.6;
+    }
+
+    .card{
+      position:absolute;
+      width:260px;
+      height:340px;
+      border-radius:25px;
+      padding:25px;
+      color:white;
+      backdrop-filter:blur(10px);
+      box-shadow:
+        0 15px 35px rgba(0,0,0,0.4);
+      cursor:pointer;
+      transition:
+        transform 0.4s ease,
+        z-index 0.2s,
+        box-shadow 0.4s;
+      overflow:hidden;
+    }
+
+    .card:hover{
+      transform:translateY(-15px) scale(1.03);
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.6);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      background:rgba(255,255,255,0.15);
+      border-radius:50%;
+      top:-50px;
+      right:-40px;
+    }
+
+    .card h2{
+      font-size:30px;
+      margin-bottom:15px;
+      z-index:2;
+      position:relative;
+    }
+
+    .card p{
+      line-height:1.7;
+      font-size:15px;
+      color:#f1f5f9;
+      position:relative;
+      z-index:2;
+    }
+
+    .tag{
+      position:absolute;
+      bottom:20px;
+      left:25px;
+      background:rgba(255,255,255,0.2);
+      padding:8px 14px;
+      border-radius:30px;
+      font-size:13px;
+      letter-spacing:1px;
+    }
+
+    /* Card Positions */
+
+    #card1{
+      background:linear-gradient(135deg,#ff512f,#dd2476);
+      left:40px;
+      top:120px;
+      z-index:1;
+      transform:rotate(-8deg);
+    }
+
+    #card2{
+      background:linear-gradient(135deg,#00c6ff,#0072ff);
+      left:290px;
+      top:90px;
+      z-index:2;
+      transform:rotate(3deg);
+    }
+
+    #card3{
+      background:linear-gradient(135deg,#11998e,#38ef7d);
+      left:540px;
+      top:140px;
+      z-index:3;
+      transform:rotate(8deg);
+    }
+
+    .info{
+      position:absolute;
+      bottom:-70px;
+      left:0;
+      color:#cbd5e1;
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .highlight{
+      color:#38bdf8;
+      font-weight:bold;
     }
   </style>
 </head>
+
 <body>
 
-  <div class="box" id="box1">1</div>
-  <div class="box" id="box2">2</div>
-  <div class="box" id="box3">3</div>
+  <div class="container">
+
+    <div class="title">
+      <h1>Advanced JavaScript z-index Stacking</h1>
+      <p>
+        Click any card to dynamically bring it to the front.
+        This demonstrates how JavaScript can control
+        <span class="highlight">layering, depth, and visual hierarchy</span>
+        using z-index.
+      </p>
+    </div>
+
+    <!-- CARD 1 -->
+    <div class="card" id="card1">
+      <h2>01</h2>
+      <p>
+        z-index determines which overlapping element appears
+        above another. Higher values stay on top.
+      </p>
+      <div class="tag">Layer One</div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card" id="card2">
+      <h2>02</h2>
+      <p>
+        JavaScript dynamically updates stacking order by
+        increasing the selected element’s z-index value.
+      </p>
+      <div class="tag">Layer Two</div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card" id="card3">
+      <h2>03</h2>
+      <p>
+        Combining gradients, blur effects, shadows, and
+        transitions creates a modern UI interaction.
+      </p>
+      <div class="tag">Layer Three</div>
+    </div>
+
+    <div class="info">
+      <strong>Tip:</strong> Click repeatedly on different cards to see
+      the stacking order change in real time.
+    </div>
+
+  </div>
 
   <script>
-    const boxes = document.querySelectorAll(".box");
+    const cards = document.querySelectorAll(".card");
 
-    let highestZ = 3;
+    let highestZ = 10;
 
-    boxes.forEach(box => {
-      box.addEventListener("click", () => {
+    cards.forEach(card => {
+
+      card.addEventListener("click", () => {
+
         highestZ++;
-        box.style.zIndex = highestZ;
+
+        // Bring clicked card to front
+        card.style.zIndex = highestZ;
+
+        // Small animation reset
+        card.style.transform += " scale(1.02)";
+
+        setTimeout(() => {
+          card.style.transform =
+            card.id === "card1"
+              ? "rotate(-8deg)"
+              : card.id === "card2"
+              ? "rotate(3deg)"
+              : "rotate(8deg)";
+        }, 200);
+
       });
+
     });
   </script>
 
