@@ -1,152 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Advanced z-index Stacking</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z Index Stacking</title>
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, Helvetica, sans-serif;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
-    body{
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at top left, #1e3c72, #0f172a 55%);
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0f172a, #111827, #1e293b);
     }
 
-    .container{
-      position:relative;
-      width:900px;
-      height:550px;
+    /* Background Glow */
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.45;
+      z-index: 0;
     }
 
-    .title{
-      position:absolute;
-      top:-70px;
-      left:0;
-      color:white;
+    body::before {
+      background: #ff0080;
+      top: -120px;
+      left: -100px;
     }
 
-    .title h1{
-      font-size:42px;
-      letter-spacing:2px;
-      margin-bottom:10px;
+    body::after {
+      background: #00d4ff;
+      bottom: -120px;
+      right: -100px;
     }
 
-    .title p{
-      color:#cbd5e1;
-      max-width:700px;
-      line-height:1.6;
+    .container {
+      position: relative;
+      width: 1000px;
+      height: 650px;
+      z-index: 1;
     }
 
-    .card{
-      position:absolute;
-      width:260px;
-      height:340px;
-      border-radius:25px;
-      padding:25px;
-      color:white;
-      backdrop-filter:blur(10px);
-      box-shadow:
-        0 15px 35px rgba(0,0,0,0.4);
-      cursor:pointer;
-      transition:
-        transform 0.4s ease,
-        z-index 0.2s,
-        box-shadow 0.4s;
-      overflow:hidden;
+    .title {
+      position: absolute;
+      top: 10px;
+      left: 40px;
+      color: white;
     }
 
-    .card:hover{
-      transform:translateY(-15px) scale(1.03);
-      box-shadow:
-        0 20px 50px rgba(0,0,0,0.6);
+    .title h1 {
+      font-size: 48px;
+      margin-bottom: 12px;
+      background: linear-gradient(to right, #38bdf8, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .card::before{
-      content:"";
-      position:absolute;
-      width:180px;
-      height:180px;
-      background:rgba(255,255,255,0.15);
-      border-radius:50%;
-      top:-50px;
-      right:-40px;
+    .title p {
+      width: 720px;
+      line-height: 1.8;
+      color: #cbd5e1;
     }
 
-    .card h2{
-      font-size:30px;
-      margin-bottom:15px;
-      z-index:2;
-      position:relative;
+    /* CARDS */
+    .card {
+      position: absolute;
+      width: 320px;
+      height: 420px;
+      border-radius: 30px;
+      padding: 30px;
+      color: white;
+      overflow: hidden;
+      cursor: pointer;
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      transition: transform 0.45s ease, box-shadow 0.45s ease;
+      transform-style: preserve-3d;
     }
 
-    .card p{
-      line-height:1.7;
-      font-size:15px;
-      color:#f1f5f9;
-      position:relative;
-      z-index:2;
+    .card:hover {
+      transform: translateY(-18px) rotate(var(--rotate)) scale(1.04);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
     }
 
-    .tag{
-      position:absolute;
-      bottom:20px;
-      left:25px;
-      background:rgba(255,255,255,0.2);
-      padding:8px 14px;
-      border-radius:30px;
-      font-size:13px;
-      letter-spacing:1px;
+    /* Shiny Reflection */
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+      top: -70px;
+      right: -60px;
     }
 
-    /* Card Positions */
-
-    #card1{
-      background:linear-gradient(135deg,#ff512f,#dd2476);
-      left:40px;
-      top:120px;
-      z-index:1;
-      transform:rotate(-8deg);
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+      transform: translateX(-100%);
+      transition: 0.8s;
     }
 
-    #card2{
-      background:linear-gradient(135deg,#00c6ff,#0072ff);
-      left:290px;
-      top:90px;
-      z-index:2;
-      transform:rotate(3deg);
+    .card:hover::after {
+      transform: translateX(100%);
     }
 
-    #card3{
-      background:linear-gradient(135deg,#11998e,#38ef7d);
-      left:540px;
-      top:140px;
-      z-index:3;
-      transform:rotate(8deg);
+    .card h2 {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 75px;
+      opacity: 0.18;
     }
 
-    .info{
-      position:absolute;
-      bottom:-70px;
-      left:0;
-      color:#cbd5e1;
-      font-size:15px;
-      line-height:1.8;
+    .card h3 {
+      margin-top: 90px;
+      font-size: 30px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
     }
 
-    .highlight{
-      color:#38bdf8;
-      font-weight:bold;
+    .card p {
+      line-height: 1.9;
+      font-size: 15px;
+      color: #f8fafc;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      position: absolute;
+      bottom: 28px;
+      left: 30px;
+      background: rgba(255, 255, 255, 0.14);
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    /* OVERLAPPING POSITIONS */
+    #card1 {
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      left: 60px;
+      top: 190px;
+      z-index: 1;
+      --rotate: -8deg;
+      transform: rotate(-8deg);
+    }
+
+    #card2 {
+      background: linear-gradient(135deg, #4776E6, #8E54E9);
+      left: 330px;
+      top: 150px;
+      z-index: 2;
+      --rotate: 2deg;
+      transform: rotate(2deg);
+    }
+
+    #card3 {
+      background: linear-gradient(135deg, #11998e, #38ef7d);
+      left: 600px;
+      top: 190px;
+      z-index: 3;
+      --rotate: 10deg;
+      transform: rotate(10deg);
+    }
+
+    /* SHAKE EFFECT */
+    @keyframes shake {
+      0% { transform: translateX(0) rotate(var(--rotate)); }
+      25% { transform: translateX(-7px) rotate(calc(var(--rotate) - 2deg)); }
+      50% { transform: translateX(7px) rotate(calc(var(--rotate) + 2deg)); }
+      75% { transform: translateX(-5px) rotate(calc(var(--rotate) - 1deg)); }
+      100% { transform: translateX(0) rotate(var(--rotate)); }
+    }
+
+    .shake {
+      animation: shake 0.45s ease;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: -40px; /* Lowered footer */
+      left: 40px;
+      color: #94a3b8;
+      font-size: 15px;
+    }
+
+    .highlight {
+      color: #38bdf8;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -154,82 +216,68 @@
 <body>
 
   <div class="container">
-
     <div class="title">
-      <h1>Advanced JavaScript z-index Stacking</h1>
+      <h1>Z index Stacking</h1>
       <p>
-        Click any card to dynamically bring it to the front.
-        This demonstrates how JavaScript can control
-        <span class="highlight">layering, depth, and visual hierarchy</span>
-        using z-index.
+        These cards are intentionally overlapping each other.
+        Clicking any card dynamically changes its
+        <span class="highlight">z-index stacking order</span>,
+        moving it smoothly to the top with animation.
       </p>
     </div>
 
-    <!-- CARD 1 -->
     <div class="card" id="card1">
       <h2>01</h2>
+      <h3>Layer System</h3>
       <p>
-        z-index determines which overlapping element appears
-        above another. Higher values stay on top.
+        z-index creates depth inside web layouts by defining
+        which elements visually appear above others.
       </p>
-      <div class="tag">Layer One</div>
+      <div class="badge">z-index: 1</div>
     </div>
 
-    <!-- CARD 2 -->
     <div class="card" id="card2">
       <h2>02</h2>
+      <h3>Interactive Stack</h3>
       <p>
-        JavaScript dynamically updates stacking order by
-        increasing the selected element’s z-index value.
+        JavaScript dynamically increases stacking priority
+        every time the user clicks a card element.
       </p>
-      <div class="tag">Layer Two</div>
+      <div class="badge">z-index: 2</div>
     </div>
 
-    <!-- CARD 3 -->
     <div class="card" id="card3">
       <h2>03</h2>
+      <h3>Modern UI Effects</h3>
       <p>
-        Combining gradients, blur effects, shadows, and
-        transitions creates a modern UI interaction.
+        Glassmorphism, gradients, blur effects,
+        animated shine, and shadows produce
+        a premium visual design.
       </p>
-      <div class="tag">Layer Three</div>
+      <div class="badge">z-index: 3</div>
     </div>
 
-    <div class="info">
-      <strong>Tip:</strong> Click repeatedly on different cards to see
-      the stacking order change in real time.
+    <div class="footer">
+      Click cards repeatedly to see
+      <span class="highlight">real-time stacking changes</span>.
     </div>
-
   </div>
 
   <script>
     const cards = document.querySelectorAll(".card");
-
     let highestZ = 10;
 
     cards.forEach(card => {
-
       card.addEventListener("click", () => {
-
+        const badge = card.querySelector(".badge");
         highestZ++;
-
-        // Bring clicked card to front
         card.style.zIndex = highestZ;
+        badge.innerText = `z-index: ${highestZ}`;
 
-        // Small animation reset
-        card.style.transform += " scale(1.02)";
-
-        setTimeout(() => {
-          card.style.transform =
-            card.id === "card1"
-              ? "rotate(-8deg)"
-              : card.id === "card2"
-              ? "rotate(3deg)"
-              : "rotate(8deg)";
-        }, 200);
-
+        card.classList.remove("shake");
+        void card.offsetWidth; 
+        card.classList.add("shake");
       });
-
     });
   </script>
 
