@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Secure Login</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Verdana, sans-serif;
+    background:linear-gradient(135deg,#1e293b,#0f172a,#111827);
+}
+
+.login-box{
+    width:380px;
+    padding:40px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+h1{
+    color:#38bdf8;
+    margin-bottom:12px;
+    font-size:34px;
+}
+
+#status{
+    color:#e2e8f0;
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    margin-bottom:20px;
+    font-size:16px;
+    outline:none;
+    background:#f1f5f9;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.04);
+}
+
+#attempts{
+    margin-top:18px;
+    color:#f8fafc;
+    font-weight:bold;
+}
+
+#message{
+    margin-top:15px;
+    font-size:17px;
+    font-weight:bold;
+}
+
+#homepage{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 22px;
+    background:#cbd5e1;
+    border-radius:20px;
+    text-decoration:none;
+    color:#0f172a;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <h1>🔐 Secure Login</h1>
+
+    <p id="status">
+        Enter Your Password
+    </p>
+
+    <input type="password"
+           id="password"
+           placeholder="Enter Password">
+
+    <button onclick="checkPassword()">
+        Access System
+    </button>
+
+    <p id="attempts">
+        Attempts Left : 3
+    </p>
+
+    <p id="message"></p>
+
+    <a id="homepage"
+       href="https://boiprateek07.github.io/sem4-fet/">
+       🏠 Home Page
+    </a>
+
+</div>
+
+<script>
+
+let attempts = 3;
+
+function checkPassword(){
+
+    let correctPassword = "Prateek07";
+    let password;
+
+    do{
+
+        password =
+        document.getElementById("password").value;
+
+        if(password === correctPassword){
+
+            document.getElementById("message").innerHTML =
+            "✅ Access Granted";
+
+            document.getElementById("message").style.color =
+            "#22c55e";
+
+            alert("Login Successful!");
+
+            break;
+        }
+
+        else{
+
+            attempts--;
+
+            document.getElementById("attempts").innerHTML =
+            "Attempts Left : " + attempts;
+
+            document.getElementById("message").innerHTML =
+            "❌ Wrong Password";
+
+            document.getElementById("message").style.color =
+            "#f87171";
+
+            alert("Incorrect Password!");
+
+            break;
+        }
+
+    }while(attempts > 0);
+
+    if(attempts == 0){
+
+        document.getElementById("message").innerHTML =
+        "🚫 System Locked";
+
+        document.getElementById("password").disabled = true;
+
+    }
+}
+
+</script>
+
+</body>
+</html>
