@@ -1,134 +1,208 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Prateek Gouda</title>
+<title>Prateek Gouda | Hacker Theme</title>
 
 <style>
+
   body {
-    background-color: skyblue;
-    font-family: Arial, sans-serif;
+    background-color: #050505;
+    color: #00ff88;
+    font-family: Consolas, monospace;
     text-align: center;
     margin: 0;
-    padding: 40px;
+    padding: 30px;
   }
 
   h1 {
-    color: #2b2d42;
-    font-size: 40px;
-    margin-bottom: 10px;
+    font-size: 45px;
+    color: #00ff88;
+    text-shadow: 0 0 10px #00ff88;
   }
 
   h2 {
-    color: #ef476f;
-    font-size: 24px;
-    margin-top: 0;
+    color: #00cc66;
+    margin-bottom: 25px;
   }
 
-  .box {
-    background-color: white;
-    max-width: 750px;
-    margin: 20px auto;
-    padding: 20px;
+  .container {
+    max-width: 850px;
+    margin: auto;
+  }
+
+  .card {
+    background-color: #0d0d0d;
+    border: 1px solid #00ff88;
+    margin: 20px 0;
+    padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 12px #00ff88;
   }
 
   p {
-    color: #444;
     font-size: 18px;
-    line-height: 1.6;
-    margin: 0;
+    line-height: 1.8;
+  }
+
+  button {
+    background-color: black;
+    color: #00ff88;
+    border: 1px solid #00ff88;
+    padding: 12px 22px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: Consolas, monospace;
+  }
+
+  button:hover {
+    background-color: #00ff88;
+    color: black;
   }
 
   a {
     display: inline-block;
     margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #118ab2;
-    color: white;
     text-decoration: none;
+    background-color: black;
+    color: #00ff88;
+    border: 1px solid #00ff88;
+    padding: 12px 20px;
     border-radius: 8px;
-    font-size: 16px;
   }
 
   a:hover {
-    background-color: #073b4c;
+    background-color: #00ff88;
+    color: black;
   }
 
-  button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #ef476f;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+  #greet {
+    color: #00ff88;
+    font-size: 22px;
+    font-weight: bold;
   }
 
-  button:hover {
-    background-color: #c9184a;
+  .typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #00ff88;
+    width: 0;
+    animation: typing 4s steps(40, end) forwards,
+               blink 0.7s infinite;
+    margin: auto;
   }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
 </style>
 
 <script>
-  function askName() {
-    let name = prompt("Enter your name:");
 
-    if (name && name.trim() !== "") {
-      alert("Welcome to Prateek's page, " + name + "!");
-      document.getElementById("greet").innerText = "Hello, " + name + " 👋";
-    } else {
-      alert("You didn't enter a name!");
+  function welcomeUser() {
+
+    let name = prompt("💀 ENTER YOUR NAME:");
+
+    if(name && name.trim() !== "") {
+
+      alert("ACCESS GRANTED ✔\nWelcome " + name);
+
+      document.getElementById("greet").innerHTML =
+      ">> USER DETECTED : " + name;
+
+    }
+
+    else {
+
+      alert("ACCESS DENIED ❌");
+
+      document.getElementById("greet").innerHTML =
+      ">> UNKNOWN USER";
+
     }
   }
+
+  function hackerMessage() {
+
+    alert("⚡ SYSTEM MESSAGE ⚡\nKeep Coding. Keep Hacking. Keep Learning.");
+
+  }
+
 </script>
 
 </head>
 
-<body onload="askName()">
+<body onload="welcomeUser()">
 
-<div class="box">
-  <h1>Prateek Gouda</h1>
-  <p id="greet"></p>
-</div>
+<div class="container">
 
-<div class="box">
-  <h2>I am currently studying in MITE</h2>
-  <p>CS Student.</p>
-</div>
+  <div class="card">
 
-<div class="box">
-  <p>
-    I mainly work with Java and Python and have a good understanding of OOP, data structures, and algorithms.
-  </p>
-</div>
+    <h1>PRATEEK GOUDA</h1>
 
-<div class="box">
-  <p>
-    I’ve also learned basic web development using HTML.
-  </p>
-</div>
+    <h2 class="typing">
+      COMPUTER SCIENCE ENGINEERING STUDENT
+    </h2>
 
-<div class="box">
-  <p>
-    I’m interested in areas like cryptography, steganography, and blockchain concepts.
-  </p>
-</div>
+    <p id="greet"></p>
 
-<div class="box">
-  <p>
-    Along with coding, I use design thinking methods to build practical and user-focused solutions.
-  </p>
-</div>
+  </div>
 
-<div class="box">
-  <button onclick="askName()">Click to Enter Name Again</button>
-</div>
+  <div class="card">
 
-<div class="box">
-  <a href="https://github.com/boiprateek07/sem4-fet/blob/main/Assignment/one.html">
-    Without CSS
-  </a>
+    <p>
+      >> Studying at MITE College <br>
+      >> Learning Java, Python, C and Front-End Technologies
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <p>
+      >> Skilled in OOP, Data Structures and Algorithms <br>
+      >> Interested in Cryptography, Blockchain and Cyber Security
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <p>
+      >> Building practical and user-focused solutions <br>
+      >> Passionate about technology and problem solving
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <button onclick="welcomeUser()">
+      LOGIN AGAIN
+    </button>
+
+    <br><br>
+
+    <button onclick="hackerMessage()">
+      SYSTEM MESSAGE
+    </button>
+
+  </div>
+
+  <div class="card">
+
+    <a href="https://github.com/boiprateek07/sem4-fet/blob/main/Assignment/one.html">
+      🔗 OPEN PROJECT
+    </a>
+
+  </div>
+
 </div>
 
 </body>
