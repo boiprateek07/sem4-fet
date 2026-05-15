@@ -22,7 +22,6 @@
       background: linear-gradient(135deg, #0f172a, #111827, #1e293b);
     }
 
-    /* Background Glow */
     body::before,
     body::after {
       content: "";
@@ -75,7 +74,6 @@
       color: #cbd5e1;
     }
 
-    /* CARDS */
     .card {
       position: absolute;
       width: 320px;
@@ -97,7 +95,6 @@
       box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
     }
 
-    /* Shiny Reflection */
     .card::before {
       content: "";
       position: absolute;
@@ -157,7 +154,6 @@
       letter-spacing: 1px;
     }
 
-    /* OVERLAPPING POSITIONS */
     #card1 {
       background: linear-gradient(135deg, #ff416c, #ff4b2b);
       left: 60px;
@@ -185,7 +181,6 @@
       transform: rotate(10deg);
     }
 
-    /* SHAKE EFFECT */
     @keyframes shake {
       0% { transform: translateX(0) rotate(var(--rotate)); }
       25% { transform: translateX(-7px) rotate(calc(var(--rotate) - 2deg)); }
@@ -200,7 +195,7 @@
 
     .footer {
       position: absolute;
-      bottom: -40px; /* Lowered footer */
+      bottom: -40px;
       left: 40px;
       color: #94a3b8;
       font-size: 15px;
@@ -210,14 +205,34 @@
       color: #38bdf8;
       font-weight: 600;
     }
+
+    .home-btn {
+      position: absolute;
+      bottom: -90px;
+      right: 40px;
+      text-decoration: none;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .home-btn:hover {
+      transform: scale(1.08);
+    }
+
   </style>
 </head>
 
 <body>
 
   <div class="container">
+
     <div class="title">
       <h1>Z index Stacking</h1>
+
       <p>
         These cards are intentionally overlapping each other.
         Clicking any card dynamically changes its
@@ -228,32 +243,41 @@
 
     <div class="card" id="card1">
       <h2>01</h2>
+
       <h3>Layer System</h3>
+
       <p>
         z-index creates depth inside web layouts by defining
         which elements visually appear above others.
       </p>
+
       <div class="badge">z-index: 1</div>
     </div>
 
     <div class="card" id="card2">
       <h2>02</h2>
+
       <h3>Interactive Stack</h3>
+
       <p>
         JavaScript dynamically increases stacking priority
         every time the user clicks a card element.
       </p>
+
       <div class="badge">z-index: 2</div>
     </div>
 
     <div class="card" id="card3">
       <h2>03</h2>
+
       <h3>Modern UI Effects</h3>
+
       <p>
         Glassmorphism, gradients, blur effects,
         animated shine, and shadows produce
         a premium visual design.
       </p>
+
       <div class="badge">z-index: 3</div>
     </div>
 
@@ -261,24 +285,41 @@
       Click cards repeatedly to see
       <span class="highlight">real-time stacking changes</span>.
     </div>
+
+    <a class="home-btn"
+       href="https://boiprateek07.github.io/sem4-fet/">
+       🏠 Home Page
+    </a>
+
   </div>
 
   <script>
+
     const cards = document.querySelectorAll(".card");
     let highestZ = 10;
 
     cards.forEach(card => {
+
       card.addEventListener("click", () => {
+
         const badge = card.querySelector(".badge");
+
         highestZ++;
+
         card.style.zIndex = highestZ;
+
         badge.innerText = `z-index: ${highestZ}`;
 
         card.classList.remove("shake");
-        void card.offsetWidth; 
+
+        void card.offsetWidth;
+
         card.classList.add("shake");
+
       });
+
     });
+
   </script>
 
 </body>
