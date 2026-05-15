@@ -3,71 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <title>Home Page</title>
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #f5f5f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    .container {
-      background-color: #ffffff;
-      padding: 35px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 340px;
-      text-align: center;
+    body{
+      font-family:'Segoe UI',Tahoma,sans-serif;
+      background:linear-gradient(135deg,#dbeafe,#ede9fe,#fce7f3);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:40px;
     }
 
-    h2 {
-      margin-bottom: 25px;
-      color: #444;
-      letter-spacing: 1px;
+    .container{
+      width:420px;
+      background:rgba(255,255,255,0.85);
+      backdrop-filter:blur(10px);
+      padding:35px;
+      border-radius:25px;
+      box-shadow:0 12px 35px rgba(0,0,0,0.15);
+      text-align:center;
     }
 
-    .link-btn {
-      display: block;
-      text-decoration: none;
-      color: #444;
-      background-color: #e8e6e1;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      transition: all 0.25s ease;
-      font-weight: 500;
+    h2{
+      color:#4c1d95;
+      margin-bottom:25px;
+      font-size:32px;
+      letter-spacing:1px;
     }
 
-    .link-btn:hover {
-      background-color: #d6d3cc;
-      transform: translateY(-2px);
+    .subtitle{
+      color:#6b7280;
+      margin-bottom:25px;
+      font-size:15px;
     }
+
+    .link-btn{
+      display:block;
+      text-decoration:none;
+      color:white;
+      background:linear-gradient(135deg,#8b5cf6,#6366f1);
+      padding:14px;
+      margin:12px 0;
+      border-radius:14px;
+      transition:0.3s;
+      font-weight:600;
+      box-shadow:0 5px 12px rgba(99,102,241,0.3);
+    }
+
+    .link-btn:hover{
+      transform:translateY(-3px) scale(1.02);
+      background:linear-gradient(135deg,#7c3aed,#4f46e5);
+    }
+
+    .footer{
+      margin-top:20px;
+      color:#6b7280;
+      font-size:14px;
+    }
+
   </style>
+
 </head>
 
 <body>
-  <div class="container">
-    <h2>Welcome to Home Page</h2>
 
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/one.html">Assignment 1</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/three.html">Assignment 2</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/four.html">Assignment 3</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/five.html">Assignment 4</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/six.html">Assignment 5</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/seven.html">Assignment 6</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_css/one_css.html">Assignment 7</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_css/five_css.html">Assignment 8</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/one_js.html">Assignment 9</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/five_js.html">Assignment 10</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/forms_js.html">Assignment 11</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/drop_down.html">Assignment 12</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/z_index.html">Assignment 13-Z_index stacking</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/drop_down.html">Assignment 14 while</a>
-    <a class="link-btn" href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/SK_do-while.html">Assignment 14 do-while</a>
+  <div class="container">
+
+    <h2>Welcome to My Home Page</h2>
+
+    <p class="subtitle">
+      Explore all Front-End Engineering assignments and projects.
+    </p>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/one.html">
+       Assignment 1
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/three.html">
+       Assignment 2
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/four.html">
+       Assignment 3
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/five.html">
+       Assignment 4
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/six.html">
+       Assignment 5
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/seven.html">
+       Assignment 6
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_css/one_css.html">
+       Assignment 7 - CSS
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_css/five_css.html">
+       Assignment 8 - CSS
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/one_js.html">
+       Assignment 9 - JavaScript
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/five_js.html">
+       Assignment 10 - JavaScript
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/forms_js.html">
+       Assignment 11 - Forms
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/drop_down.html">
+       Assignment 12 - Drop Down
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/z_index.html">
+       Assignment 13 - Z Index
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/drop_down.html">
+       Assignment 14 - While Loop
+    </a>
+
+    <a class="link-btn"
+       href="https://boiprateek07.github.io/sem4-fet/Assignment/html_with_js/SK_do-while.html">
+       Assignment 15 - Do While Loop
+    </a>
+
+    <div class="footer">
+      Created by Prateek Gouda
+    </div>
 
   </div>
+
 </body>
 </html>
